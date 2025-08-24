@@ -3,192 +3,338 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repose AI - The Sanctuary of Mind</title>
-    <!-- Google Fonts for Classy Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Repose AI - Find Peace in Your Thoughts</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* CSS Styling - Embedded from style.css */
+        /* Basic Reset and Variables */
+        :root {
+            --primary-color: #6a1b9a; /* Deep Purple */
+            --secondary-color: #9c27b0; /* Lighter Purple */
+            --text-color: #333;
+            --light-bg: #f3e5f5; /* Very Light Lavender */
+            --white: #fff;
+            --font-poppins: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-poppins);
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        h1, h2, h3 {
-            font-family: 'Cormorant Garamond', serif;
+
+        /* Header and Hero Section */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--white);
+            padding: 2rem 5%;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
         }
-        /* Custom background gradient animation for a soothing, futuristic feel */
-        @keyframes subtle-gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            filter: blur(50px);
         }
-        .bg-animated-gradient {
-            background: linear-gradient(-45deg, #111827, #1f2937, #111827, #1f2937);
-            background-size: 400% 400%;
-            animation: subtle-gradient-flow 20s ease infinite;
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 1.5rem 5%;
         }
-        /* A subtle glow effect for elements on hover */
-        .glow-on-hover:hover {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700; /* Gold */
+        }
+
+        .hero-content {
+            margin-top: 5rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: 300;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: var(--white);
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Main Sections */
+        .features-section, .about-section {
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 600;
+            margin-bottom: 3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+            margin: 10px auto 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .card-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffd700; /* Gold */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feature-card {
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .fade-in-section {
+           opacity: 0;
+           transform: translateY(20px);
+           transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.visible {
+           opacity: 1;
+           transform: translateY(0);
         }
     </style>
 </head>
-<body class="bg-zinc-950 text-zinc-200 antialiased overflow-x-hidden">
+<body>
 
-    <!-- Header - Fixed and Spaced for a Final Time -->
-    <header class="sticky top-0 z-50 bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-            <a href="#" class="text-3xl font-bold tracking-widest text-white">Repose AI</a>
-            
-            <nav class="hidden md:flex items-center space-x-12 text-sm font-medium">
-                <a href="https://reposechat.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">AI Chat</a>
-                <a href="https://reposeforum.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">Forum</a>
-                <a href="https://reposemeet.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">Meet with Counsellors</a>
-                <a href="https://reposecalm.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">Calm Yourself</a>
-                <a href="https://repsoegames.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">Gamified Distractions</a>
-                <a href="https://reposechat.onrender.com/" class="text-zinc-400 hover:text-white transition-colors duration-200">Loop Thought Monitor</a>
-            </nav>
-
-            <button id="mobile-menu-button" class="md:hidden text-zinc-200 focus:outline-none">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 px-4 pt-2 pb-4 space-y-2 text-sm">
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">AI Chat</a>
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">Forum</a>
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">Meet with Counsellors</a>
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">Calm Yourself</a>
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">Gamified Distractions</a>
-            <a href="#" class="block py-2 text-zinc-400 hover:text-white transition-colors duration-200">Loop Thought Monitor</a>
+    <header class="header">
+        <nav class="navbar">
+            <h1 class="logo">Repose AI</h1>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h2 class="hero-title">Find Peace in Your Thoughts</h2>
+            <p class="hero-subtitle">Repose AI is a safe space designed to help you navigate your mind and transform overthinking into clarity.</p>
+            <button class="cta-button">Start Your Journey</button>
         </div>
     </header>
 
     <main>
-        <!-- Hero Section - A Soothing, Moving Background -->
-        <section class="relative pt-32 pb-48 overflow-hidden bg-animated-gradient">
-            <div class="relative max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-                <h1 class="text-6xl sm:text-7xl md:text-8xl font-extralight tracking-tight text-white mb-6 leading-none">
-                    A Sanctuary for the Restless Mind.
-                </h1>
-                <p class="text-xl sm:text-2xl text-zinc-400 mb-10 leading-relaxed max-w-2xl mx-auto">
-                    A refined AI-powered platform to guide you beyond the echoes of rumination and into a state of serene clarity.
-                </p>
-                <a href="#" class="inline-block bg-white text-zinc-900 font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-zinc-200 hover:shadow-lg">
-                    Embark on Your Journey
-                </a>
-            </div>
-        </section>
-
-        <!-- The Science of Overthinking Section -->
-        <section class="py-24 bg-zinc-900 border-t border-b border-zinc-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <h2 class="text-5xl font-light mb-4 text-white">The Neural Labyrinth</h2>
-                <p class="text-lg text-zinc-400 max-w-3xl mx-auto mb-16">
-                    Rumination is not merely a habit, but a deep-seated neurological pattern. It is linked to the over-activation of the **Default Mode Network (DMN)**, a circuit responsible for self-reflection. This creates a cognitive echo chamber, consuming vital mental resources.
-                </p>
-                
-                <div class="flex flex-col md:flex-row justify-center items-start space-y-12 md:space-y-0 md:space-x-12 text-left">
-                    <div class="bg-zinc-800 p-8 rounded-2xl border border-zinc-700 shadow-xl w-full md:w-1/2 lg:w-1/3 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-zinc-500 glow-on-hover">
-                        <span class="text-fuchsia-400 text-4xl mb-4 inline-block">🧠</span>
-                        <h3 class="text-2xl font-medium mb-2 text-white">The Brain's DMN</h3>
-                        <p class="text-zinc-300 text-base">
-                            When the DMN is over-engaged, it cycles through thoughts and anxieties, preventing the brain from forming new, more adaptive pathways.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-800 p-8 rounded-2xl border border-zinc-700 shadow-xl w-full md:w-1/2 lg:w-1/3 transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-zinc-500 glow-on-hover">
-                        <span class="text-fuchsia-400 text-4xl mb-4 inline-block">🔗</span>
-                        <h3 class="text-2xl font-medium mb-2 text-white">Cognitive Entanglement</h3>
-                        <p class="text-zinc-300 text-base">
-                            This relentless loop diminishes the prefrontal cortex's capacity for executive function, making it difficult to find clarity and focus.
-                        </p>
-                    </div>
+        <section id="features" class="features-section">
+            <h3 class="section-title">How We Can Help</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="card-icon">🧠</div>
+                    <h4 class="card-title">AI Chat</h4>
+                    <p class="card-description">Talk to our AI companion anytime, designed with therapeutic approaches like **CBT**.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">👩‍⚕️</div>
+                    <h4 class="card-title">Meet with a Counselor</h4>
+                    <p class="card-description">Connect with licensed professionals who specialize in rumination and anxiety.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">🗣️</div>
+                    <h4 class="card-title">Community Forum</h4>
+                    <p class="card-description">Share experiences and find support in a safe and moderated environment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="card-icon">📈</div>
+                    <h4 class="card-title">Thought Loop Monitor</h4>
+                    <p class="card-description">Identify and understand your thought patterns to gain insight and reframe your thinking.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Our Solutions Section -->
-        <section class="py-24">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-5xl font-light text-center mb-16 text-white">Our Curated Offerings</h2>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">AI Chat</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Reflective Discourse:** A secure, confidential space to reframe your thoughts and challenge cognitive distortions with an AI trained in therapeutic principles.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">Loop Thought Monitor</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Pattern Recognition:** Visually chart your thought cycles to gain objective insight and consciously disrupt repetitive neuropathways.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">Gamified Distractions</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Cognitive Redirection:** Mindful games designed to shift your focus and cultivate new, positive thought patterns through neuroplasticity.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">Calm Yourself</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Guided Serenity:** Access a library of guided meditations, breathwork, and ambient soundscapes to soothe your nervous system and find tranquility.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">Forum</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Shared Perspective:** Connect with a supportive, curated community to share experiences and find solidarity in your journey.
-                        </p>
-                    </div>
-                    <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 shadow-lg transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl hover:border-fuchsia-700 glow-on-hover">
-                        <h3 class="text-2xl font-medium mb-2 text-white">Meet with Counsellors</h3>
-                        <p class="text-zinc-300 mb-4">
-                            **Expert Guidance:** Seamlessly connect with licensed professionals for personalized, human-led therapeutic sessions.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Final Call to Action -->
-        <section class="py-24 text-center">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 class="text-5xl md:text-6xl font-light mb-6 text-white leading-tight">
-                    Your Path to Repose Awaits.
-                </h2>
-                <p class="text-lg md:text-xl text-zinc-400 mb-10">
-                    Join our exclusive community and begin your journey toward lasting mental clarity and calm.
-                </p>
-                <a href="#" class="inline-block bg-white text-zinc-900 font-medium py-4 px-12 rounded-full text-lg transition-all duration-300 transform hover:scale-105 hover:bg-zinc-200 hover:shadow-lg">
-                    Sign Up for Free
-                </a>
-            </div>
+        <section id="about" class="about-section">
+            <h3 class="section-title">Our Philosophy</h3>
+            <p class="about-text">At Repose AI, we believe in the power of conscious thought. Our mission is to provide a compassionate and effective tool to help you break free from rumination and build a more positive outlook on life.</p>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-zinc-900 py-10 border-t border-zinc-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-zinc-500">
+    <footer id="contact" class="footer">
+        <div class="footer-content">
             <p>&copy; 2025 Repose AI. All rights reserved.</p>
-            <div class="flex justify-center space-x-4 mt-4">
-                <a href="#" class="hover:text-zinc-400 transition-colors duration-200">Privacy Policy</a>
-                <a href="#" class="hover:text-zinc-400 transition-colors duration-200">Terms of Service</a>
-                <a href="#" class="hover:text-zinc-400 transition-colors duration-200">Contact</a>
+            <div class="social-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Mobile Menu -->
     <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
+        // JavaScript - Embedded from script.js
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select all sections to observe
+            const sections = document.querySelectorAll('section');
+
+            // Create a new Intersection Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Add a class to make the section visible
+                        entry.target.classList.add('visible');
+                        // Stop observing once the section is visible
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 }); // The section becomes visible when 30% is in view
+
+            // Add a class to the sections for styling
+            sections.forEach(section => {
+                section.classList.add('fade-in-section');
+                observer.observe(section);
+            });
         });
     </script>
 </body>
